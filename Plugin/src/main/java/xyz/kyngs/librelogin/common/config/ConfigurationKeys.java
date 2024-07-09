@@ -63,6 +63,15 @@ public class ConfigurationKeys {
         LOBBY_DEFAULT.put("root", "lobby1");
     }
 
+    public static final ConfigurationKey<Boolean> FORCE_PLAYER_TO_LOBBY_AFTER_LOGIN = new ConfigurationKey<>(
+            "force-player-to-lobby-after-login",
+            false,
+            """
+                    This options force player to lobby after logging in successful.
+                    """,
+            ConfigurateHelper::getBoolean
+    );
+
     public static final ConfigurationKey<Boolean> IGNORE_MAX_PLAYERS_FROM_BACKEND_PING = new ConfigurationKey<>(
             "ignore-max-players-from-backend-ping",
             false,

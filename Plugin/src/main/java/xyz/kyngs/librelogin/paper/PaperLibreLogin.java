@@ -33,6 +33,7 @@ import java.io.InputStream;
 import java.util.UUID;
 
 import static xyz.kyngs.librelogin.common.config.ConfigurationKeys.DEBUG;
+import static xyz.kyngs.librelogin.common.config.ConfigurationKeys.FORCE_PLAYER_TO_LOBBY_AFTER_LOGIN;
 
 public class PaperLibreLogin extends AuthenticLibreLogin<Player, World> {
 
@@ -169,7 +170,7 @@ public class PaperLibreLogin extends AuthenticLibreLogin<Player, World> {
 
             var location = listeners.getSpawnLocationCache().getIfPresent(player);
 
-            if (location == null) {
+            if (location == null || getConfiguration().get(FORCE_PLAYER_TO_LOBBY_AFTER_LOGIN)) {
                 var world = getServerHandler().chooseLobbyServer(user, player, true, false);
 
                 if (world == null) {
